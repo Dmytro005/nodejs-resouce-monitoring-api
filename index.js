@@ -9,10 +9,6 @@ const config = require("./lib/config");
 const handlers = require('./lib/handles');
 const helpers = require('./lib/helpers');
 
-helpers.sendTwilioSMS('0632573504', 'Hi from poland!', function(err) {
-    console.log(err);
-});
-
 // Instantiate http server
 const httpServer = http.createServer(function(req, res) {
     unifiedServer(req, res);
