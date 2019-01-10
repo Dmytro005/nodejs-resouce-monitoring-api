@@ -118,15 +118,15 @@ app.logUserOut = function(redirectUser) {
             : false;
 
     // Send the current token to the tokens endpoint to delete it
-    var queryStringObject = {
+    var payload = {
         tokenId
     };
     app.client.request(
         undefined,
         "api/tokens",
         "DELETE",
-        queryStringObject,
         undefined,
+        payload,
         function(statusCode, responsePayload) {
             // Set the app.config token as false
             app.setSessionToken(false);
