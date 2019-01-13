@@ -6,7 +6,7 @@
 
 // Dependencies
 const server = require('./lib/server');
-const workers = require('./lib/workers');
+const workers = require('./lib/workers/');
 const cli = require('./lib/cli');
 
 const app = {};
