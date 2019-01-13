@@ -1,0 +1,14 @@
+{ 
+    "commands": [
+        "man",
+        "help",
+        "exit",
+        "stats",
+        "list users",
+        "more user info",
+        "list checks",
+        "more check info",
+        "list logs",
+        "more log info"
+    ]
+}
