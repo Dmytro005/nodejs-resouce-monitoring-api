@@ -4,35 +4,10 @@
  *
  */
 
-const helpers = require("../lib/common/helpers");
-
-const assert = require("assert");
-
 const _app = {};
 
 _app.tests = {
-    unit: {}
-};
-
-// Assert that some function will return a number
-_app.tests.unit["helpers.getANumber should return a number"] = function(done) {
-    const value = helpers.getANumber();
-    assert.equal(typeof value, "number");
-    done();
-};
-
-// Assert that some function will return some value
-_app.tests.unit["helpers.getANumber should return 1"] = function(done) {
-    const value = helpers.getANumber();
-    assert.equal(value, 1);
-    done();
-};
-
-// Assert that some function will return some value
-_app.tests.unit["helpers.getANumber should return 2"] = function(done) {
-    const value = helpers.getANumber();
-    assert.equal(value, 2);
-    done();
+    unit: require("./unit")
 };
 
 // Count the complete number of tests
@@ -121,7 +96,7 @@ _app.produceTestReport = function(limit, successCounter, errors) {
         console.log("");
 
         errors.forEach(error => {
-            console.log('\x1b[31m%s\x1b[0m', error.name);
+            console.log("\x1b[31m%s\x1b[0m", error.name);
             console.log(error.error);
             console.log("");
         });
@@ -129,7 +104,10 @@ _app.produceTestReport = function(limit, successCounter, errors) {
         console.log("-----------------END ERROR DETAILS----------------");
     }
     console.log("");
-    console.log("\x1b[33m%s\x1b[0m", "------------- END OF A TEST REPORT--------------");
+    console.log(
+        "\x1b[33m%s\x1b[0m",
+        "------------- END OF A TEST REPORT--------------"
+    );
 };
 
 // Run the tests
