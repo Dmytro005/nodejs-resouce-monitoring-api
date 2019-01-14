@@ -4,10 +4,14 @@
  *
  */
 
+// Override NODE_ENV
+process.env.NODE_ENV = "testing";
+
 const _app = {};
 
 _app.tests = {
-    unit: require("./unit")
+    unit: require("./unit"),
+    api: require("./api")
 };
 
 // Count the complete number of tests
@@ -40,32 +44,16 @@ _app.runTests = function() {
             let subTest = _app.tests[key];
 
             for (let testName in _app.tests[key]) {
-                (function() {
-                    let tempTestName = testName;
-                    let testValue = subTest[testName];
+                // (function() {
+                let tempTestName = testName;
+                let testValue = subTest[testName];
+                try {
                     // Call the test
-                    try {
-                        testValue(function() {
-                            // If this function is called, the test is succedded
-                            console.log(
-                                "\x1b[32mPassed: %s\x1b[0m",
-                                tempTestName
-                            );
-                            counter++;
-                            successCounter++;
-                            if (counter === limit) {
-                                _app.produceTestReport(
-                                    limit,
-                                    successCounter,
-                                    errors
-                                );
-                            }
-                        });
-                    } catch (error) {
-                        // Capture the failed test
-                        errors.push({ name: testName, error });
-                        console.log("\x1b[31mFailed: %s\x1b[0m", tempTestName);
+                    testValue(function() {
+                        // If this function is called, the test is succedded
+                        console.log("\x1b[32mPassed: %s\x1b[0m", tempTestName);
                         counter++;
+                        successCounter++;
                         if (counter === limit) {
                             _app.produceTestReport(
                                 limit,
@@ -73,8 +61,19 @@ _app.runTests = function() {
                                 errors
                             );
                         }
+                    });
+                } catch (error) {
+                    console.log("catched", error);
+
+                    // Capture the failed test
+                    errors.push({ name: testName, error });
+                    console.log("\x1b[31mFailed: %s\x1b[0m", tempTestName);
+                    counter++;
+                    if (counter === limit) {
+                        _app.produceTestReport(limit, successCounter, errors);
                     }
-                })();
+                }
+                // })();
             }
         }
     }
@@ -108,6 +107,7 @@ _app.produceTestReport = function(limit, successCounter, errors) {
         "\x1b[33m%s\x1b[0m",
         "------------- END OF A TEST REPORT--------------"
     );
+    process.exit(0);
 };
 
 // Run the tests
