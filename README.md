@@ -30,6 +30,12 @@ Start application and view logs from ***workers***
 $ NODE_DEBUG=workers node index.js
 ```
 
+## Run the tests
+
+```console
+$ node test
+```
+
 ## CLI tools
 
 Command | Action
