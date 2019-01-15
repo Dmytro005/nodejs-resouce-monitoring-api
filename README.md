@@ -30,6 +30,11 @@ Start application and view logs from ***workers***
 $ NODE_DEBUG=workers node index.js
 ```
 
+Start application and view logs about functions ***performance***
+```console
+$ NODE_DEBUG=performance node index.js
+```
+
 ## Run the tests
 
 ```console
