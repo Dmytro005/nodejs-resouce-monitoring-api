@@ -1,0 +1,30 @@
+{
+  "name": "pure_nodejs_api",
+  "version": "1.0.0",
+  "description": "This API was built without any npm module! It allows a user to enter the URL's they want to be monitored, and receive alerts when this resource go _down_ and _come back_",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "onchange": "^5.2.0",
+    "sinon": "^7.2.3",
+    "rewire": "^4.0.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests/unit",
+    "watch": "./node_modules/.bin/onchange 'tests/unit/**/*.*' -- npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmytro005/raw-node-api.git"
+  },
+  "author": "Dmytro Harazdovskiy <harazdovskiy@gmail.com> (https://github.com/Dmytro005)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dmytro005/raw-node-api/issues"
+  },
+  "homepage": "https://github.com/Dmytro005/raw-node-api#readme"
+}
