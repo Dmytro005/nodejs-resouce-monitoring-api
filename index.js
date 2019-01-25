@@ -6,7 +6,10 @@
 
 // Dependencies
 const server = require('./lib/server');
-const workers = require('./lib/workers/');
+// const workers = require('./lib/workers/');
+
+const workers = require('./lib/workers.v2.0');
+
 const cli = require('./lib/cli');
 
 const app = {};
@@ -17,6 +20,7 @@ app.init = function (callback) {
 
     // Start workers
     workers.init();
+    workers.runJob();
 
     // Start the cli
     setTimeout(function(){
